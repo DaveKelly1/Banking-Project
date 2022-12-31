@@ -1,19 +1,21 @@
 import java.util.Random;
 
-public class Account extends Customer {
+import interfaces.iAccount;
+
+public class Account extends Customer implements iAccount {
 	private int funds;
 	private int accountNo;
 	private int accountID;
 	private String name;
 
-	public Account(){
+	public Account() {
 		funds = 0;
-		accountNo = accountNoRandom();
+		accountNo = accountNumber();
 		accountID = accountIDRandom();
 		name = "";
 	}
 
-	public int accountNoRandom() {
+	public int accountNumber() {
 		Random random = new Random();
 		int acctNo = 100000 + random.nextInt(999999);
 		return acctNo;
@@ -42,23 +44,22 @@ public class Account extends Customer {
 	}
 
 	public void deposit(int sum) {
-		if(sum > 0) {
-			funds += sum;
+		if (sum < 1) {
+			System.out.println("Please enter a valid amount");
 		}
-		else {
-			System.out.println("Please try again");
-		}
+		funds += sum;
 	}
-	
+
 	public void withdraw(int sum) {
-		funds -= sum;
+		if (funds - sum >= 0) {
+			funds -= sum;
+			System.out.println("You have withdrawn " + sum);
+		}
+		System.out.println("Insufficient funds");
 	}
 
 	public boolean checkPositiveFunds() {
-		if(funds > 0) {
-			return true;
-		}
-		return false;
+		return (funds > 0);
 	}
 
 }

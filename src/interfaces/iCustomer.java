@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface customer {
+public interface iCustomer {
     public void enterName(String name);
 
     public void enterDOB(int dob);

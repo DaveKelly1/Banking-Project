@@ -1,6 +1,6 @@
-import interfaces.customer;
+import interfaces.iCustomer;
 
-public class Customer implements customer {
+public class Customer implements iCustomer {
 	private String fullName;
 	private int dob;
 
