@@ -53,7 +53,7 @@ public class Account extends Customer implements iAccount {
 	public void withdraw(int sum) {
 		if (funds - sum >= 0) {
 			funds -= sum;
-			System.out.println("You have withdrawn " + sum);
+			System.out.println("You have withdrawn £" + sum);
 		}
 		System.out.println("Insufficient funds");
 	}
