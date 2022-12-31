@@ -1,52 +1,39 @@
+import interfaces.customer;
 
-public class Customer {
-	private String name;
+public class Customer implements customer {
+	private String fullName;
 	private int dob;
-	private String address;
-	
+
 	public Customer() {
-		name = "";
+		fullName = "";
 		dob = 0;
-		address = "";
 	}
-	
+
+	@Override
 	public String returnName() {
-		return name;
+		return fullName;
 	}
-	
-	public int returnDob() {
+
+	@Override
+	public int returnDOB() {
 		return dob;
 	}
-	
-	public String returnAddress() {
-		return address;
-	}
-	
-	public void enterName(String fullName) {
-		if(!(fullName.equals(""))){
-			name = fullName;
-		}
-		else {
+
+	@Override
+	public void enterName(String name) {
+		if (name.length() > 3) {
 			System.out.println("A name has already been submitted");
 		}
+		fullName = name.trim();
 	}
-	
-	public void enterDob(int date) {
+
+	@Override
+	public void enterDOB(int date) {
 		String dateLength = Integer.toString(date);
-		if(dateLength.length() == 6) {
-			dob = date;
-		}
-		else {
+		if (dateLength.length() != 6) {
 			System.out.println("Please enter your date of birth in the format DD/MM/YY");
 		}
+		dob = date;
 	}
-	
-	public void enterAddress(String fullAddress) {
-		if(!(fullAddress.equals(""))) {
-			address = fullAddress;
-		}
-		else {
-			System.out.println("An address has already been submitted");
-		}
-	}
+
 }
