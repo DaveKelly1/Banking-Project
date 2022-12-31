@@ -1,3 +1,5 @@
+package features;
+
 import interfaces.iCustomer;
 
 public class Customer implements iCustomer {
